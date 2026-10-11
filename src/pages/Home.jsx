@@ -3,7 +3,6 @@ import { getProducts } from "../data/products";
 
 export default function Home() {
   const products = getProducts();
-  console.log(products);
 
   return (
     <div className="page">
