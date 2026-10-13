@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function Auth() {
@@ -8,6 +8,7 @@ export default function Auth() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { signUp, login } = useContext(AuthContext);
+  const location = useLocation();
 
   const {
     register,
@@ -27,7 +28,7 @@ export default function Auth() {
     }
 
     if (result.success) {
-      navigate("/");
+      navigate(location.state || "/");
     } else {
       setError(result.error);
     }
